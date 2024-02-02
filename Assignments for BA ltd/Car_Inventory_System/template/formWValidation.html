@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehicle Information Form</title>
+
+   <link rel="stylesheet" href="static/index.css">
+  
+
+</head>
+<body onload="defaultCartype()">
+
+<form method="post" action="{% url 'save_info' %}" id="vehicleForm" onsubmit="return validateForm()">
+    {% csrf_token %}
+    <h2>Car Information Form</h2>
+
+    <label for="carType">Enter Car Type:</label>
+    <select id="carType" name="carType" required onclick="showHideBatteryCapacity()" >
+        <option value="">Select Car Type</option>
+        <option value="electric">Electric</option>
+        <option value="gas">Gas</option>
+      
+    </select>
+
+    <div id="carTypeError" class="error"></div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <div id="nameError" class="error"></div>
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model" required>
+    <div id="modelError" class="error"></div>
+
+    <label for="year">Year:</label>
+    <input type="text" id="year" name="year" required>
+    <div id="yearError" class="error"></div>
+<div>
+
+     <div id="batteryCapacity" class="batteryCapacity" >
+        <label for="batteryInput">Enter Battery Capacity:</label>
+        <input type="number" id="batteryInput" name="batteryInput" placeholder="Battery Capacity (kWh)">
+    </div>
+    <div id="fuelEfficiency" class="fuelEfficiency" >
+        <label for="fuelInput">Enter Fuel Efficiency:</label>
+        <input type="number" id="fuelInput" name="fuelInput" placeholder="Fuel Efficiency(MPG)">
+    </div>
+</div>
+   
+
+    <input type="submit" value="Submit">
+</form>
+<a href="http://127.0.0.1:8000/admin/"><h2 style="margin-left: 50px;">Show Data In The Admin Panel</h2></a>
+<script src="static/index.js"></script>
+</body>
+</html>
