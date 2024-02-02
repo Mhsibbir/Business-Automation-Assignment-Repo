@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Saved</title>
+
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+    <div style="text-align: center;" ><button type="button" style="background-color: antiquewhite;text-align: center;"><a href="{% url 'home' %}"><h2 >Add More Data</h2></a></button></div>
+    <a href="http://127.0.0.1:8000/admin/"><h2 style="text-align: center;">Show Data In The Admin Panel</h2></a>
+
+<h3 style="text-align: center;">Car Information Table</h3>
+
+<table>
+  <tr>
+    <th>Car Type</th>
+    <th>Name</th>
+    <th>Model</th>
+    <th>Year</th>
+    <th>Fuel Efficiency</th>
+    <th>Battery Capacity</th>
+  </tr>
+  
+ {% for n in car_data %}
+  <tr>
+    
+    <td>{{ n.car_type | capfirst }}</td>
+    <td>{{ n.name }}</td>
+    <td>{{ n.model }}</td>
+    <td>{{ n.year}}</td>
+    <td>{{ n.fuel_efficiency}}</td>
+    <td>{{ n.battery_capacity}}</td>
+  </tr>
+ {% endfor %}
+</table>
+
+</body>
+</html>

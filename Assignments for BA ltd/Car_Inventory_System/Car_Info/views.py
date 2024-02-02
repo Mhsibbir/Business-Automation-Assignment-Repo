@@ -18,3 +18,10 @@ def save_info(request):
         data.save()
         messege = 'Car information saved'
     return render(request,"success_save.html",{'message':messege})
+
+def datatables(request):
+    data = car_info_model.objects.all()
+    context = {"car_data" : data}
+    
+   
+    return render(request,"datatables.html",context)
